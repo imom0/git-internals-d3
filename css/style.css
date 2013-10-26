@@ -1,0 +1,17 @@
+.container {
+	margin: 20px auto;
+	width: 960px;
+}
+
+.content {
+	width: 100%;
+}
+
+h3 {
+	font-size: 2em;
+	font-family: Helvetica, arial, freesans, clean, sans-serif;
+}
+
+p {
+	font-family: monospace;
+}
