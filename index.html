@@ -9,12 +9,47 @@
 	  <div class="content">
 		<h3>Git internals in d3.js</h3>
 		<p>Under development.</p>
+		<div>
+		  <svg></svg>
+		</div>
 	  </div>
 	</div>
   </body>
   <script type="text/javascript">
 	(function() {
-	 d3.selectAll('p').style('color', 'lightblue');
-	 })();
+	  d3.selectAll('p').style('color', 'lightblue');
+	  var svg = d3.select('svg')
+				.attr('width', 900)
+				.attr('height', 600),
+				canvas = svg.append('g'),
+				data = ['./', 'Rakefile', 'README', 'lib/', 'lib/simplegit.rb'];
+	  canvas.selectAll('.files')
+			.data(data)
+			.enter()
+			.append('rect')
+			.attr('class', 'files')
+			.attr('rx', 5)
+			.attr('ry', 5)
+			.attr('x', 200)
+			.attr('y', function(d, i) {
+			  return 100 + i * 50;
+			})
+			.attr('height', 30)
+			.attr('width', 150)
+			.attr("fill", "#fff")
+			.attr("stroke", "#333")
+			.attr("stroke-width", "2");
+	  canvas.selectAll('.file-names')
+			.data(data)
+			.enter()
+			.append('text')
+			.attr('class', 'file-names')
+			.text(function(d) { return d;})
+			.attr('x', 220)
+			.attr('y', function(d, i) {
+			  return 120 + i * 50;
+			})
+			.attr('fill', '#333')
+	})();
   </script>
 </html>
