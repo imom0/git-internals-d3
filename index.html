@@ -22,7 +22,8 @@
 				.attr('width', 900)
 				.attr('height', 600),
 				canvas = svg.append('g'),
-				data = ['./', 'Rakefile', 'README', 'lib/', 'lib/simplegit.rb'];
+				data = ['./', 'Rakefile', 'README', 'lib/', 'lib/simplegit.rb'],
+				blobData = ['', 'blob : a874b7', 'blob : a906cb', '', 'blob : a0a60a'];
 	  canvas.selectAll('.files')
 			.data(data)
 			.enter()
@@ -46,6 +47,17 @@
 			.attr('class', 'file-names')
 			.text(function(d) { return d;})
 			.attr('x', 220)
+			.attr('y', function(d, i) {
+			  return 120 + i * 50;
+			})
+			.attr('fill', '#333')
+	  canvas.selectAll('.blob-labels')
+			.data(blobData)
+			.enter()
+			.append('text')
+			.attr('class', 'blob-labels')
+			.text(function(d) { return d;})
+			.attr('x', 520)
 			.attr('y', function(d, i) {
 			  return 120 + i * 50;
 			})
