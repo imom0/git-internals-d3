@@ -83,6 +83,29 @@
 			})
 			.attr("stroke", "#000")
 			.attr("stroke-dasharray", ("3, 3"))
+	  var models = [
+		{name: 'HEAD', color: 'gray'},
+		{name: 'branch', color: 'gray'},
+		{name: 'commit', color: 'springgreen'},
+		{name: 'tree', color: 'cyan'},
+		{name: 'blob', color: 'violet'}
+	  ];
+	  canvas.selectAll('.model')
+			.data(models)
+			.enter()
+			.append('rect')
+			.attr('class', 'model')
+			.attr('rx', 10)
+			.attr('ry', 10)
+			.attr('x', function(d, i) {
+			    return 200 + i * 100;
+			})
+			.attr('y', 400)
+			.attr('height', 25)
+			.attr('width', 80)
+			.attr("fill", function(d) {
+			    return d.color;
+			});
 	})();
   </script>
 </html>
